@@ -1,10 +1,10 @@
 package com.lambda.apps.thisref;
 
-public class LambdaThisRefernce {
+public class LambdaThisReference {
 
 	public static void main(String[] args) {
 		
-		LambdaThisRefernce lambda = new LambdaThisRefernce();
+		LambdaThisReference lambda = new LambdaThisReference();
 		
 		lambda.giveHomeworkToStudent(new Student() {
 			@Override
