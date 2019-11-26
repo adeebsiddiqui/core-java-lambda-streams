@@ -17,9 +17,12 @@ public class Stream {
 	public static void main(String[] args) {
 
 		personList.forEach(p -> System.out.println(p));
-		
-		System.out.println("-------");
-		
+
+		System.out.println("-----After sorting-----");
+		personList.sort( (Person p1, Person p2) -> p1.getAge() - p2.getAge());
+		personList.forEach(p -> System.out.println(p));
+
+		System.out.println("-----Use of Stream-----");
 		personList.stream()
 			.filter(p -> p.getLastName().startsWith("R"))
 			.forEach(p -> System.out.println(p)); // <-- Terminal operation of a Stream, no operation can be done after this
