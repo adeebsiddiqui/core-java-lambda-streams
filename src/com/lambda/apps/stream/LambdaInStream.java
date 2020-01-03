@@ -44,7 +44,7 @@ public class LambdaInStream {
 
 		System.out.println("\n-----Ex 2: Use of map() in Stream-----");
 		List<Company> stringList = laptopList.stream()
-				.map(l -> l.getBrand())
+				.map(Laptop::getBrand)
 				.map(Company::new)
 				.collect(Collectors.toList());
 		System.out.println(stringList);
