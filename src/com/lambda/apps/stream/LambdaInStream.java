@@ -25,29 +25,29 @@ public class LambdaInStream {
 		System.out.println("\n-----Use of filter() in Stream-----");
 		laptopList.stream()
 			.filter(l -> !l.getBrand().startsWith("M"))
-			.forEach(System.out::println); // <-- Terminal operation of Stream, no Intermediate operation can be done after this
+			.forEach(System.out::println); // <-- Terminal operation of Stream, no Intermediate operation can be performed after this
 
 		System.out.println("\n-----Use of findAny() & findFirst() in Stream-----");
 		Laptop laptop = laptopList.stream()
 				.filter(l -> l.getBrand().startsWith("M"))
 				.findAny()
-//				.findFirst()
+				//.findFirst()
 				.orElse(null);
 		System.out.println(laptop);
 
 		System.out.println("\n-----Ex 1: Use of map() in Stream-----");
-		/** map() is generally used to convert stream of one object to another */
 		List<String> brandList = laptopList.stream()
 				.map(l -> l.getBrand().toUpperCase())
 				.collect(Collectors.toList());
 		System.out.println(brandList);
 
+		/** map() is generally used to convert stream of one object to another */
 		System.out.println("\n-----Ex 2: Use of map() in Stream-----");
-		List<Company> stringList = laptopList.stream()
+		List<Company> companyList = laptopList.stream()
 				.map(Laptop::getBrand)
 				.map(Company::new)
 				.collect(Collectors.toList());
-		System.out.println(stringList);
+		System.out.println(companyList);
 	}
 
 }
