@@ -5,6 +5,7 @@ import com.lambda.apps.model.Laptop;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,6 +49,11 @@ public class LambdaInStream {
 				.map(Company::new)
 				.collect(Collectors.toList());
 		System.out.println(companyList);
+
+		System.out.println("\n-----Use of max() in Stream-----");
+		laptopList.stream()
+				.max(Comparator.comparing(Laptop::getPrice))
+				.ifPresent(System.out::println);
 	}
 
 }
