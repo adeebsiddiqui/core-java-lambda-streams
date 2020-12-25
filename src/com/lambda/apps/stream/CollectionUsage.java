@@ -21,6 +21,12 @@ public class CollectionUsage {
 
 	public static void main(String[] args) {
 
+		System.out.println("-----List before Sorting-----");
+		laptopList.forEach(System.out::println);
+
+		laptopList.sort((l1, l2) -> l1.getPrice() - l2.getPrice());
+
+		System.out.println("\n-----List after Sorting-----");
 		laptopList.forEach(System.out::println);
 
 		System.out.println("\n-----Use of filter() in Stream-----");
