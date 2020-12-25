@@ -3,7 +3,7 @@ package com.lambda.apps.stream;
 import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
-public class ReductionInStream {
+public class Reduction {
 
     public static void main(String[] args) {
         IntStream intStream = IntStream.of(1, 2, 3, 4, 5);

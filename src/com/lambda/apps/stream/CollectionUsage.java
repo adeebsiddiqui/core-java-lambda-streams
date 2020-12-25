@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LambdaInStream {
+public class CollectionUsage {
 
 	private static List<Laptop> laptopList = new ArrayList<>(
 			Arrays.asList(
