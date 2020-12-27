@@ -21,14 +21,6 @@ public class CollectionUsage {
 
     public static void main(String[] args) {
 
-        System.out.println("-----List before Sorting-----");
-        laptopList.forEach(System.out::println);
-
-        laptopList.sort(Comparator.comparingInt(Laptop::getPrice));
-
-        System.out.println("\n-----List after Sorting-----");
-        laptopList.forEach(System.out::println);
-
         System.out.println("\n-----Use of filter() in Stream-----");
         laptopList.stream()
                 .filter(l -> !l.getBrand().startsWith("M"))
