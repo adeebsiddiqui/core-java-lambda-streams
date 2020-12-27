@@ -11,55 +11,54 @@ import java.util.stream.Collectors;
 
 public class CollectionUsage {
 
-	private static List<Laptop> laptopList = new ArrayList<>(
-			Arrays.asList(
-					new Laptop("HP", 800),
-					new Laptop("Apple", 1200),
-					new Laptop("Dell", 500)
-			)
-	);
+    private static List<Laptop> laptopList = new ArrayList<>(
+            Arrays.asList(
+                    new Laptop("HP", 800),
+                    new Laptop("Apple", 1200),
+                    new Laptop("Dell", 500)
+            )
+    );
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		System.out.println("-----List before Sorting-----");
-		laptopList.forEach(System.out::println);
+        System.out.println("-----List before Sorting-----");
+        laptopList.forEach(System.out::println);
 
-		laptopList.sort((l1, l2) -> l1.getPrice() - l2.getPrice());
+        laptopList.sort(Comparator.comparingInt(Laptop::getPrice));
 
-		System.out.println("\n-----List after Sorting-----");
-		laptopList.forEach(System.out::println);
+        System.out.println("\n-----List after Sorting-----");
+        laptopList.forEach(System.out::println);
 
-		System.out.println("\n-----Use of filter() in Stream-----");
-		laptopList.stream()
-			.filter(l -> !l.getBrand().startsWith("M"))
-			.forEach(System.out::println); // <-- Terminal operation of Stream, no Intermediate operation can be performed after this
+        System.out.println("\n-----Use of filter() in Stream-----");
+        laptopList.stream()
+                .filter(l -> !l.getBrand().startsWith("M"))
+                .forEach(System.out::println); // <-- Terminal operation of Stream, no Intermediate operation can be performed after this
 
-		System.out.println("\n-----Use of findAny() & findFirst() in Stream-----");
-		Laptop laptop = laptopList.stream()
-				.filter(l -> l.getBrand().startsWith("M"))
-				.findAny()
-				//.findFirst()
-				.orElse(null);
-		System.out.println(laptop);
+        System.out.println("\n-----Use of findAny() & findFirst() in Stream-----");
+        Laptop laptop = laptopList.stream()
+                .filter(l -> l.getBrand().startsWith("M"))
+                .findAny()
+                //.findFirst()
+                .orElse(null);
+        System.out.println(laptop);
 
-		System.out.println("\n-----Ex 1: Use of map() in Stream-----");
-		List<String> brandList = laptopList.stream()
-				.map(l -> l.getBrand().toUpperCase())
-				.collect(Collectors.toList());
-		System.out.println(brandList);
+        System.out.println("\n-----Ex 1: Use of map() in Stream-----");
+        List<String> brandList = laptopList.stream()
+                .map(l -> l.getBrand().toUpperCase())
+                .collect(Collectors.toList());
+        System.out.println(brandList);
 
-		/** map() is generally used to convert stream of one object to another */
-		System.out.println("\n-----Ex 2: Use of map() in Stream-----");
-		List<Company> companyList = laptopList.stream()
-				.map(Laptop::getBrand)
-				.map(Company::new)
-				.collect(Collectors.toList());
-		System.out.println(companyList);
+        /** map() is generally used to convert stream of one object to another */
+        System.out.println("\n-----Ex 2: Use of map() in Stream-----");
+        List<Company> companyList = laptopList.stream()
+                .map(Laptop::getBrand)
+                .map(Company::new)
+                .collect(Collectors.toList());
+        System.out.println(companyList);
 
-		System.out.println("\n-----Use of max() in Stream-----");
-		laptopList.stream()
-				.max(Comparator.comparing(Laptop::getPrice))
-				.ifPresent(System.out::println);
-	}
-
+        System.out.println("\n-----Use of max() in Stream-----");
+        laptopList.stream()
+                .max(Comparator.comparing(Laptop::getPrice))
+                .ifPresent(System.out::println);
+    }
 }

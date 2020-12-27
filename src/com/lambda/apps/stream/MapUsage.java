@@ -14,8 +14,8 @@ public class MapUsage {
 
         boolean buyPrize = hashMap.entrySet()
                 .stream()
-                .filter( m -> m.getValue() == false )
-                .map( m -> m.getValue())
+                .filter(m -> m.getValue() == false)
+                .map(m -> m.getValue())
                 .findFirst()
                 .orElse(Boolean.TRUE);
 
