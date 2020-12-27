@@ -4,7 +4,7 @@ import java.util.function.IntBinaryOperator;
 import java.util.function.IntFunction;
 
 /**
- * When body of a Lambda Expression calls another method then Method Reference can be used instead of Lambda Expression,
+ * When a Lambda Expression calls an existing method then Method Reference can be used instead of Lambda Expression,
  *	iff the argument and return type of both Lambda Expression and the calling method are exactly the same
  */
 public class MethodReference {
@@ -14,7 +14,7 @@ public class MethodReference {
 		MethodReference methodRef = new MethodReference();
 		
 		/*Static method reference*/
-		Thread thread = new Thread( MethodReference::doProcess ); //() -> doProcess()
+		Thread thread = new Thread( MethodReference::doProcess ); //() -> doProcess() <-- implementation of Runnable interface
 		thread.start(); //run() of Runnable is called here
 		
 		/*instance method reference*/
