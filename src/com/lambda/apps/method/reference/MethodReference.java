@@ -18,11 +18,11 @@ public class MethodReference {
 		thread.start(); //run() of Runnable is called here
 		
 		/*instance method reference*/
-		int value = methodRef.multiply( methodRef::doProcess ); //p -> doProcess(p)
+		int value = methodRef.multiply( methodRef::doProcess, 5 ); //p -> doProcess(p)
 		System.out.println(value);
 		
 		/*instance method reference*/
-		value = methodRef.add( new MethodReference()::doProcess ); //(p,q) -> doProcess(p,q)
+		value = methodRef.add( new MethodReference()::doProcess, 3, 5 ); //(p,q) -> doProcess(p,q)
 		System.out.println(value);
 		
 	}
@@ -32,16 +32,16 @@ public class MethodReference {
 	}
 	
 	
-	public int multiply(IntFunction<Integer> fi) {
-		return fi.apply(5);
+	public int multiply(IntFunction<Integer> fi, int value) {
+		return fi.apply(value);
 	}
 	private int doProcess(int p) {
 		return p*p;
 	}
 	
 	
-	public int add(IntBinaryOperator fi) {
-		return fi.applyAsInt(3,5);
+	public int add(IntBinaryOperator fi, int value1, int value2) {
+		return fi.applyAsInt(value1,value2);
 	}
 	private int doProcess(int p, int q) {
 		return p+q;
