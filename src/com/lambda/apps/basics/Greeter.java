@@ -29,7 +29,7 @@ public class Greeter {
 	public void greet( Greeting greeting ) { //retrieving the behavior, behavior can have many implementations
 		greeting.perform();
 	}
-
+	/* Basically a Lambda Expression is an implementation of the single abstract method in a Functional Interface */
 }
 
 /**
