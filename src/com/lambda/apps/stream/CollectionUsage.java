@@ -23,7 +23,9 @@ public class CollectionUsage {
 
         System.out.println("\n-----Use of filter() in Stream-----");
         laptopList.stream()
-                .filter(l -> !l.getBrand().startsWith("M"))
+                .map(Laptop::getBrand)
+                //.filter(Objects::nonNull)
+                .filter(brand -> brand.startsWith("D"))
                 .forEach(System.out::println); // <-- Terminal operation of Stream, no Intermediate operation can be performed after this
 
         System.out.println("\n-----Use of findAny() & findFirst() in Stream-----");
